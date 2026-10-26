@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sorin Group – Build your perfect Discord server</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#313338;--bg2:#2B2D31;--bg3:#1E1F22;--text:#F2F3F5;--mut:#B5BAC1;--line:#3F4147;--brand:#5865F2;--brand-h:#4752C4;--green:#23A559;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#FFFFFF;--bg2:#F2F3F5;--bg3:#E3E5E8;--text:#313338;--mut:#5C5E66;--line:#D7D9DD;color-scheme:light}}
+:root[data-theme="light"]{--bg:#FFFFFF;--bg2:#F2F3F5;--bg3:#E3E5E8;--text:#313338;--mut:#5C5E66;--line:#D7D9DD;color-scheme:light}
+:root[data-theme="dark"]{--bg:#313338;--bg2:#2B2D31;--bg3:#1E1F22;--text:#F2F3F5;--mut:#B5BAC1;--line:#3F4147;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 "gg sans","Noto Sans","Segoe UI",Helvetica,Arial,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+.logo{font-weight:800;font-size:20px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:32px;height:32px;border-radius:50%;background:var(--brand);display:grid;place-items:center;color:#fff;font-style:normal;font-size:16px}
+nav a{margin-left:18px;text-decoration:none;color:var(--mut);font-weight:600}
+nav a:hover{color:var(--text)}
+.hero{padding:56px 0 36px}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;font-weight:800;max-width:15ch}
+.hero p{font-size:19px;color:var(--mut);max-width:52ch;margin:0 0 24px}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:700 16px/1.2 inherit;font-family:inherit;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--brand-h)}
+.btn.alt{background:var(--bg3);color:var(--text)}
+.btn.alt:hover{background:var(--line)}
+section{padding:40px 0}
+h2{font-size:clamp(26px,4vw,36px);margin:0 0 8px;letter-spacing:-.01em}
+.lead{color:var(--mut);margin:0 0 28px;max-width:60ch}
+.builder{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+.panel{background:var(--bg2);border-radius:8px;padding:20px}
+.panel h3{margin:0 0 10px;font-size:16px}
+.panel + .panel{margin-top:16px}
+label.f{display:block;font-weight:600;margin-bottom:6px}
+input[type=text]{width:100%;background:var(--bg3);color:var(--text);border:1px solid transparent;border-radius:4px;padding:10px 12px;font:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--bg3);color:var(--text);border:2px solid transparent;border-radius:6px;padding:8px 14px;font:600 15px inherit;font-family:inherit;cursor:pointer}
+.chip:hover{border-color:var(--line)}
+.chip[aria-pressed="true"]{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 22%,var(--bg3))}
+.chip small{display:block;font-weight:400;color:var(--mut);font-size:13px}
+.preview{background:var(--bg2);border-radius:8px;overflow:hidden;border:1px solid var(--line);position:sticky;top:12px}
+.pv-head{padding:14px 16px;font-weight:800;border-bottom:1px solid var(--line);background:var(--bg2);word-break:break-word}
+.pv-body{padding:10px 8px 14px;background:var(--bg2);max-height:430px;overflow:auto}
+.cat{margin:12px 0 2px 8px;font-size:13px;font-weight:700;color:var(--mut)}
+.ch{display:flex;gap:8px;align-items:center;padding:4px 8px;margin:1px 0;border-radius:4px;color:var(--mut);font-weight:600;font-size:15px}
+.ch:hover{background:var(--bg);color:var(--text)}
+.ch b{width:18px;text-align:center;font-weight:600;opacity:.8}
+.pv-foot{padding:10px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--mut);display:flex;justify-content:space-between}
+pre#sum{white-space:pre-wrap;background:var(--bg3);border-radius:4px;padding:12px;margin:0 0 12px;font:13px/1.5 ui-monospace,Consolas,monospace;color:var(--mut)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#msg{color:var(--green);font-weight:600;font-size:14px}
+.tpls{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.tpl{background:var(--bg2);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.tpl h3{margin:0;font-size:19px}
+.tpl p{margin:0;color:var(--mut);font-size:15px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{background:var(--bg3);border-radius:4px;padding:2px 8px;font-size:13px;color:var(--mut)}
+.tpl .btn{align-self:flex-start;padding:9px 16px;font-size:15px}
+.cta{background:var(--brand);color:#fff;border-radius:8px;padding:36px 28px}
+.cta h2{margin-bottom:8px}
+.cta p{margin:0 0 20px;max-width:56ch}
+.cta .btn{background:#fff;color:#3B45B5}
+.cta .btn:hover{background:#E3E5FF}
+footer{padding:28px 0 40px;color:var(--mut);font-size:14px}
+@media (max-width:820px){.builder{grid-template-columns:1fr}.preview{position:static}nav a{margin-left:12px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="#"><i>S</i>Sorin Group</a>
+  <nav><a href="#builder">Builder</a><a href="#templates">Templates</a><a href="#contact">Contact</a></nav>
+</header>
+
+<div class="hero">
+  <h1>Build the Discord server you actually want.</h1>
+  <p>Pick a server type, switch on the features you need, and watch your channels appear. Or start from a ready-made template.</p>
+  <a class="btn" href="#builder">Start building</a>
+</div>
+
+<section id="builder">
+  <h2>Server builder</h2>
+  <p class="lead">Every change updates the preview on the right. Nothing is final until you send us your setup.</p>
+  <div class="builder">
+    <div>
+      <div class="panel">
+        <label class="f" for="name">Server name</label>
+        <input id="name" type="text" maxlength="32" value="My Server" autocomplete="off">
+      </div>
+      <div class="panel">
+        <h3>1. What is your server about?</h3>
+        <div class="chips" id="types" role="group" aria-label="Server type"></div>
+      </div>
+      <div class="panel">
+        <h3>2. Add features</h3>
+        <div class="chips" id="feats" role="group" aria-label="Features"></div>
+      </div>
+      <div class="panel">
+        <h3>3. Your setup</h3>
+        <pre id="sum" aria-live="polite"></pre>
+        <div class="row">
+          <button class="btn" id="copy" type="button">Copy my setup</button>
+          <a class="btn alt" href="#contact">Send it to us</a>
+          <span id="msg" role="status"></span>
+        </div>
+      </div>
+    </div>
+    <aside class="preview" aria-label="Live server preview">
+      <div class="pv-head" id="pvName"></div>
+      <div class="pv-body" id="pvBody"></div>
+      <div class="pv-foot"><span id="pvT"></span><span id="pvV"></span></div>
+    </aside>
+  </div>
+</section>
+
+<section id="templates">
+  <h2>Ready-made templates</h2>
+  <p class="lead">Load one into the builder, then change whatever you like.</p>
+  <div class="tpls" id="tpls"></div>
+</section>
+
+<section id="contact">
+  <div class="cta">
+    <h2>Happy with your setup?</h2>
+    <p>Join our Discord and send us your setup. We set up the channels, roles and bots so you can go live.</p>
+    <!-- Replace the link below with your real Discord invite -->
+    <a class="btn" href="https://discord.com/invite/YOUR-INVITE">Join the Sorin Group Discord</a>
+  </div>
+</section>
+
+<footer>© 2026 Sorin Group. Custom Discord servers and bots.</footer>
+</div>
+
+<script>
+var TYPES={
+  gaming:{label:"Gaming",sub:"Clans, squads, game nights",chat:["general","clips","looking-for-group"],voice:["Lobby","Squad 1","Squad 2"]},
+  community:{label:"Community",sub:"Friends and fan groups",chat:["general","introductions","off-topic"],voice:["Hangout","Chill room"]},
+  creator:{label:"Creator",sub:"Streamers, artists, YouTubers",chat:["general","showcase","feedback"],voice:["Studio","Co-working"]},
+  study:{label:"Study",sub:"Classes and learning groups",chat:["general","resources","homework-help"],voice:["Study room 1","Study room 2"]},
+  business:{label:"Business",sub:"Customers and support",chat:["general","faq"],voice:["Meeting room"]}
+};
+var FEATS={
+  welcome:{label:"Welcome and rules",sub:"Greeting channel, rules",add:{"Start here":[["t","welcome"],["t","rules"]]}},
+  news:{label:"Announcements",sub:"News for everyone",add:{"Start here":[["t","announcements"]]}},
+  roles:{label:"Self-assign roles",sub:"Members pick their roles",add:{"Start here":[["t","get-roles"]]}},
+  tickets:{label:"Support tickets",sub:"Private help requests",add:{"Support":[["t","open-a-ticket"],["t","support-faq"]]}},
+  levels:{label:"Levels and XP",sub:"Rewards for activity",add:{"Fun":[["t","level-ups"],["t","leaderboard"]]}},
+  giveaways:{label:"Giveaways",sub:"Prizes and contests",add:{"Fun":[["t","giveaways"]]}},
+  music:{label:"Music",sub:"Voice lounge and requests",add:{"Fun":[["t","music-requests"]],"Voice":[["v","Music lounge"]]}},
+  events:{label:"Events",sub:"Schedule and event stage",add:{"Events":[["t","events"],["v","Event stage"]]}}
+};
+var ORDER=["Start here","Chat","Fun","Events","Support","Voice"];
+var TEMPLATES=[
+  {n:"Gaming clan",d:"Squad voice channels, roles for each game and a level system to keep members active.",type:"gaming",f:["welcome","news","roles","events","levels"]},
+  {n:"Creator community",d:"A home for your fans with a showcase, feedback, giveaways and events.",type:"creator",f:["welcome","news","giveaways","levels","events"]},
+  {n:"Study group",d:"Quiet study rooms, a resources channel and an events calendar for deadlines.",type:"study",f:["welcome","news","roles","events"]},
+  {n:"Support desk",d:"Customer-friendly server with announcements, an FAQ and a ticket system.",type:"business",f:["welcome","news","tickets","roles"]},
+  {n:"Friends hangout",d:"Relaxed server with music, giveaways and levels for a lively community.",type:"community",f:["welcome","music","giveaways","levels"]}
+];
+var state={type:"gaming",feats:new Set(["welcome","news"]),name:"My Server"};
+var $=function(i){return document.getElementById(i)};
+
+function build(){
+  var t=TYPES[state.type],cats={};
+  function put(c,k,n){cats[c]=cats[c]||[];if(!cats[c].some(function(x){return x[1]===n}))cats[c].push([k,n])}
+  t.chat.forEach(function(n){put("Chat","t",n)});
+  t.voice.forEach(function(n){put("Voice","v",n)});
+  state.feats.forEach(function(k){var a=FEATS[k].add;for(var c in a)a[c].forEach(function(x){put(c,x[0],x[1])})});
+  return cats;
+}
+function render(){
+  var cats=build(),body=$("pvBody"),tc=0,vc=0;
+  body.textContent="";
+  ORDER.forEach(function(c){
+    if(!cats[c])return;
+    var h=document.createElement("div");h.className="cat";h.textContent="⌄ "+c;body.appendChild(h);
+    cats[c].forEach(function(x){
+      var r=document.createElement("div");r.className="ch";
+      var i=document.createElement("b");i.textContent=x[0]==="t"?"#":"🔊";
+      var s=document.createElement("span");s.textContent=x[0]==="t"?x[1]:x[1];
+      r.appendChild(i);r.appendChild(s);body.appendChild(r);
+      if(x[0]==="t")tc++;else vc++;
+    });
+  });
+  var nm=state.name.trim()||"My Server";
+  $("pvName").textContent=nm;
+  $("pvT").textContent=tc+" text channels";$("pvV").textContent=vc+" voice";
+  var fl=[];state.feats.forEach(function(k){fl.push(FEATS[k].label)});
+  $("sum").textContent="Server name: "+nm+"\nType: "+TYPES[state.type].label+"\nFeatures: "+(fl.join(", ")||"none")+"\nChannels: "+tc+" text, "+vc+" voice";
+  document.querySelectorAll("#types .chip").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.k===state.type))});
+  document.querySelectorAll("#feats .chip").forEach(function(b){b.setAttribute("aria-pressed",String(state.feats.has(b.dataset.k)))});
+}
+function chip(parent,k,o,fn){
+  var b=document.createElement("button");b.type="button";b.className="chip";b.dataset.k=k;
+  b.appendChild(document.createTextNode(o.label));
+  var s=document.createElement("small");s.textContent=o.sub;b.appendChild(s);
+  b.addEventListener("click",fn);parent.appendChild(b);
+}
+Object.keys(TYPES).forEach(function(k){chip($("types"),k,TYPES[k],function(){state.type=k;render()})});
+Object.keys(FEATS).forEach(function(k){chip($("feats"),k,FEATS[k],function(){state.feats.has(k)?state.feats.delete(k):state.feats.add(k);render()})});
+$("name").addEventListener("input",function(e){state.name=e.target.value;render()});
+
+TEMPLATES.forEach(function(t){
+  var c=document.createElement("div");c.className="tpl";
+  var h=document.createElement("h3");h.textContent=t.n;
+  var p=document.createElement("p");p.textContent=t.d;
+  var tg=document.createElement("div");tg.className="tags";
+  [TYPES[t.type].label].concat(t.f.map(function(k){return FEATS[k].label})).forEach(function(x){var s=document.createElement("span");s.textContent=x;tg.appendChild(s)});
+  var b=document.createElement("button");b.type="button";b.className="btn";b.textContent="Use this template";
+  b.addEventListener("click",function(){
+    state.type=t.type;state.feats=new Set(t.f);state.name=t.n;$("name").value=t.n;render();
+    $("builder").scrollIntoView({behavior:"smooth"});
+  });
+  c.appendChild(h);c.appendChild(p);c.appendChild(tg);c.appendChild(b);$("tpls").appendChild(c);
+});
+
+$("copy").addEventListener("click",function(){
+  var m=$("msg");
+  try{
+    navigator.clipboard.writeText($("sum").textContent).then(function(){m.textContent="Copied!"},function(){m.textContent="Copy failed. Select the text above and copy it."});
+  }catch(e){m.textContent="Copy failed. Select the text above and copy it."}
+  setTimeout(function(){m.textContent=""},3000);
+});
+render();
+</script>
+</body>
+</html>
