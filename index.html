@@ -194,7 +194,7 @@ let audioContext;
 function playSound(id){try{audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();const {samples,rate}=generateSound(id),b=audioContext.createBuffer(1,samples.length,rate);b.copyToChannel(samples,0);const src=audioContext.createBufferSource();src.buffer=b;src.connect(audioContext.destination);src.start();toast('Playing preview: '+id)}catch(e){toast('Audio is not supported by this browser.')}}
 function downloadSound(id){const snd=generateSound(id);downloadBlob(`sorin-${id}.wav`,snd.buffer,'audio/wav');toast('Original WAV downloaded.')}
 $('#navToggle').addEventListener('click',()=>{const nav=$('#navigation');const next=!nav.classList.contains('open');nav.classList.toggle('open',next);$('#navToggle').setAttribute('aria-expanded',String(next))});
-window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
+window.addEventListener('hashchange',()=>{closeModal();render();window.scrollTo(0,0)});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 render();
 
