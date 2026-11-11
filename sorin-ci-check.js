@@ -1,0 +1,10 @@
+const fs = require('node:fs');
+const vm = require('node:vm');
+const assert = require('node:assert/strict');
+const html = fs.readFileSync('index.html', 'utf8');
+assert.match(html, /<!doctype html>/i);
+assert.match(html, /<html\b/i);
+const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)].filter(m => !/\bsrc\s*=/.test(m[1]));
+assert.ok(scripts.length > 0, 'No inline JavaScript found');
+scripts.forEach((m,i) => new vm.Script(m[2], { filename: 'inline-' + i + '.js' }));
+console.log('PASS: HTML basics and ' + scripts.length + ' inline scripts');
